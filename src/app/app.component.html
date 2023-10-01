@@ -1,0 +1,44 @@
+
+<div class="container">
+  <div class="form-title">
+    <h2>Formulario de contenido</h2>
+  </div>
+  <div class="form-content">
+    <form [formGroup]="form" class="form-content" (ngSubmit)="save()">
+      <div class="form-main">
+        <div class="d-flex flex-row justify-content-center">
+          <div class="d-flex flex-column p-4" style="width: 50%;">           
+           
+            <label for="opcionContenido">Contenido</label>
+            <select formControlName="opcionContenido">
+              <option [value]="item.id" *ngFor="let item of listCont">{{item.name}}</option>
+            </select>
+        
+            <label for="tipoc">Tipo Contenido</label>
+            <input type="text"  formControlName="tipoc" placeholder="Tipo contenido..">
+        
+            <label for="anio">Año</label>
+            <input type="text" formControlName="anio" placeholder="Año..">
+        
+            <label for="semana">No. Semana</label>
+            <input type="text" formControlName="semana" placeholder="Número de semana..">
+        
+            <label for="segmento">Segmento de semana</label>
+            <input type="text" formControlName="segmento" placeholder="Segmento de semana..">
+        
+            <label for="inicio">Hora de Inicio..</label>
+            <input type="time" formControlName="inicio" placeholder="Hora Inicio..">
+            <br><br>
+        
+            <label for="fin">Hora de Fin..</label>
+            <input type="time" formControlName="fin" placeholder="Hora Fin..">
+            <br><br>
+        
+            <input type="submit">
+
+          </div>
+        </div>  
+      </div>
+    </form>
+  </div>  
+</div>

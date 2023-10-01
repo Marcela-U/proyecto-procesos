@@ -1,0 +1,15 @@
+{       
+    "/rest/*":{
+        "target":"http://13.92.28.33:10048",
+        "secure": false,
+        "logLevel":"debug",
+        "changeOrigin":true
+    },
+
+    "/jsonrpc/*":{
+        "target":"http://172.174.234.110:8069",
+        "secure": false,
+        "logLevel":"debug",
+        "changeOrigin":true
+    }
+}
