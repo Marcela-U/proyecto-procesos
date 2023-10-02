@@ -9,6 +9,10 @@ export class ListService {
 
   constructor(private http: HttpClient) { }
 
+  consultarInstancia(): Observable<any>{
+    return this.http.get('kie-server/services/rest/server/containers/ProyectoBPMS_1.0.0-SNAPSHOT/processes/instances?status=1&page=0&pageSize=10&sortOrder=true');    
+  }
+
 getContenidos(): Observable<any> {
  
 const payload2 = {

@@ -1,0 +1,128 @@
+<!-- 
+
+<div class="container">
+    <div class="form-title">
+      <h2>Formulario de contenido</h2>
+    </div>
+    <div class="form-content">
+      <form [formGroup]="form" class="form-content" (ngSubmit)="save()">
+        <div class="form-main">
+          <div class="d-flex flex-row justify-content-center">
+            <div class="d-flex flex-column p-4" style="width: 50%;">           
+             
+              <label for="opcionContenido">Contenido</label>
+              <select formControlName="opcionContenido">
+                <option [value]="item.id" *ngFor="let item of listCont">{{item.name}}</option>
+              </select>
+          
+              <label for="tipoc">Tipo Contenido</label>
+              <input type="text"  formControlName="tipoc" placeholder="Tipo contenido..">
+          
+              <label for="anio">Año</label>
+              <input type="text" formControlName="anio" placeholder="Año..">
+          
+              <label for="semana">No. Semana</label>
+              <input type="text" formControlName="semana" placeholder="Número de semana..">
+          
+              <label for="segmento">Segmento de semana</label>
+              <input type="text" formControlName="segmento" placeholder="Segmento de semana..">
+          
+              <label for="inicio">Hora de Inicio..</label>
+              <input type="time" formControlName="inicio" placeholder="Hora Inicio..">
+              <br><br>
+          
+              <label for="fin">Hora de Fin..</label>
+              <input type="time" formControlName="fin" placeholder="Hora Fin..">
+              <br><br>
+          
+              <input type="submit">
+  
+            </div>
+          </div>  
+        </div>
+      </form>
+    </div>  
+  </div> -->
+  <div *ngIf="!datosemana">
+    <div>
+        <h1 mat-dialog-title>Ingresar Datos</h1>
+        <div mat-dialog-content>
+            <div style="display: flex;flex-direction: column; margin:1rem auto; max-width: 600px; padding: 1rem;">        
+                <mat-form-field>
+                    <input matInput [(ngModel)]="data.sem" type="text" placeholder="Ingrese semana">
+                </mat-form-field>    
+                <mat-form-field>
+                    <input matInput [(ngModel)]="data.yearss" type="text" placeholder="Ingrese año">
+                </mat-form-field>    
+            </div>
+        </div>
+        <div mat-dialog-actions>
+            <button mat-button (click)="cancelar()">Cancelar</button>
+            <button mat-button (click)="ingresar($event)">Confirmar</button>
+        </div>
+    </div>
+  </div>
+
+  <div *ngIf="datosemana">
+    <h1 mat-dialog-title>Parrilla de Contenidos</h1>    
+    <div mat-dialog-content>
+        <div style="display: flex;flex-direction: row; margin:1rem auto; width: 70%; padding: 1rem;">
+            <div class="d-flex flex-row">
+            <div class="p-2">
+                <!-- <table [columns]="columnsTable" [value]="dataTable"></table> -->          
+                <table mat-table [dataSource]="datosI" class="mat-elevation-z8">
+                  <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumnsI">
+                    <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+                    <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+                  </ng-container>
+                
+                  <tr mat-header-row *matHeaderRowDef="columnsToDisplayI"></tr>
+                  <tr mat-row *matRowDef="let row; columns: columnsToDisplayI;"></tr>
+                </table>
+              </div>
+              <br><br>
+            <div class="col-4" style="width: 40%;">
+                <h1>Formulario de contenido</h1>    
+            <form [formGroup]="form" class="form-content" (ngSubmit)="save()">
+                <div class="form-main">
+               
+                      <label for="opcionContenido">Contenido</label>
+                      <select formControlName="opcionContenido">
+                        <option [value]="item.id" *ngFor="let item of listCont">{{item.name}}</option>
+                      </select>
+                  
+                      <label for="tipoc">Tipo Contenido</label>
+                      <input type="text"  formControlName="tipoc" placeholder="Tipo contenido..">
+                  
+                      <label for="anio">Año</label>
+                      <input type="text" formControlName="anio" placeholder="Año..">
+                  
+                      <label for="semana">No. Semana</label>
+                      <input type="text" formControlName="semana" placeholder="Número de semana..">
+                  
+                      <label for="segmento">Segmento de semana</label>
+                      <input type="text" formControlName="segmento" placeholder="Segmento de semana..">
+                  
+                      <label for="inicio">Hora de Inicio..</label>
+                      <input type="time" formControlName="inicio" placeholder="Hora Inicio..">
+                      <br><br>
+                  
+                      <label for="fin">Hora de Fin..</label>
+                      <input type="time" formControlName="fin" placeholder="Hora Fin..">
+                      <br><br>
+                  
+                      <input type="submit">
+          
+                </div>
+              </form>  
+            </div>  
+        </div>         
+
+        </div>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-button (click)="cancelar()">Cancelar</button>
+        <!-- <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Confirmar</button> -->
+        <button mat-button (click)="guardar()">Guardar</button>
+    </div>
+</div>

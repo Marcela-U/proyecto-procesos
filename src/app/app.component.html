@@ -1,44 +1,27 @@
-
-<div class="container">
-  <div class="form-title">
-    <h2>Formulario de contenido</h2>
+<img width="10%"  src="./assets/logo.jpg">
+<br>
+<div class="example-button-row">
+  <button mat-button color="primary" (click)="showModal()">Crear</button>
   </div>
-  <div class="form-content">
-    <form [formGroup]="form" class="form-content" (ngSubmit)="save()">
-      <div class="form-main">
-        <div class="d-flex flex-row justify-content-center">
-          <div class="d-flex flex-column p-4" style="width: 50%;">           
-           
-            <label for="opcionContenido">Contenido</label>
-            <select formControlName="opcionContenido">
-              <option [value]="item.id" *ngFor="let item of listCont">{{item.name}}</option>
-            </select>
-        
-            <label for="tipoc">Tipo Contenido</label>
-            <input type="text"  formControlName="tipoc" placeholder="Tipo contenido..">
-        
-            <label for="anio">Año</label>
-            <input type="text" formControlName="anio" placeholder="Año..">
-        
-            <label for="semana">No. Semana</label>
-            <input type="text" formControlName="semana" placeholder="Número de semana..">
-        
-            <label for="segmento">Segmento de semana</label>
-            <input type="text" formControlName="segmento" placeholder="Segmento de semana..">
-        
-            <label for="inicio">Hora de Inicio..</label>
-            <input type="time" formControlName="inicio" placeholder="Hora Inicio..">
-            <br><br>
-        
-            <label for="fin">Hora de Fin..</label>
-            <input type="time" formControlName="fin" placeholder="Hora Fin..">
-            <br><br>
-        
-            <input type="submit">
-
-          </div>
-        </div>  
+  <br>
+<h2>Consulta de Instancias Activas de Proceso</h2>
+<div class="d-flex">
+  <div class="p-2">
+    <fieldset legend="Instancias">
+      <div class="d-flex flex.row mb-3">
+        <div class="p-2">
+          <!-- <table [columns]="columnsTable" [value]="dataTable"></table> -->          
+          <table mat-table [dataSource]="datosI" class="mat-elevation-z8">
+            <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumnsI">
+              <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+              <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+            </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="columnsToDisplayI"></tr>
+            <tr mat-row *matRowDef="let row; columns: columnsToDisplayI;"></tr>
+          </table>
+        </div>
       </div>
-    </form>
-  </div>  
+    </fieldset>
+  </div>
 </div>
